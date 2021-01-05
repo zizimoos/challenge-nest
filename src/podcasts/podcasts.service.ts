@@ -59,9 +59,9 @@ export class PodcastsService {
     upDateEpisode: Episode,
   ) {
     const podcast = this.getOne(podcastId);
-    const newEpisode = podcast.episodes.find((epi) => epi.id === episodeId);
     this.deleteEpisodeId(podcastId, episodeId);
-    podcast.episodes[newEpisode.id] = upDateEpisode;
+    podcast.episodes.push({ ...upDateEpisode, id: episodeId });
+
     return podcast;
   }
 
@@ -69,5 +69,6 @@ export class PodcastsService {
     const podcast = this.getOne(podcastId);
     const newEpisode = podcast.episodes.filter((epi) => epi.id !== episodeId);
     podcast.episodes = newEpisode;
+    return podcast;
   }
 }
