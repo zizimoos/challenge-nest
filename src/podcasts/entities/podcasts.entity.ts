@@ -1,4 +1,5 @@
 export class Episode {
+  id: number;
   episode: string;
 }
 
